@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_add) {
-            Snackbar.make(getWindow().getDecorView(), "Add study mates not implemented yet", Snackbar.LENGTH_LONG)
+            Snackbar.make(getWindow().getDecorView(), "adding study mates is not available yet.", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
             return true;
         }
@@ -132,6 +132,40 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+        if (id == R.id.action_add) {
+            Snackbar.make(getWindow().getDecorView(), "adding study mates is not available yet.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            return true;
+        }
+        if (id == R.id.action_delete) {
+            Snackbar.make(getWindow().getDecorView(), "deleting a study mate is not available yet", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            return true;
+        }
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        if (id == R.id.action_email) {
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+            emailIntent.setType("*/*");
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Hey Study Partner");
+            if (emailIntent.resolveActivity(getPackageManager()) != null){
+                startActivity(emailIntent);
+            }
+            return true;
+        }
+        if (id == R.id.action_SMS) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setType("*/*");
+            intent.putExtra(Intent.EXTRA_STREAM, "hey Study Partner");
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+            return true;
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
